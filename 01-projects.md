@@ -201,4 +201,4 @@ That's good for now. You can go ahead and delete the `myotherproject` project.
 $ oc delete project myotherproject
 ```
 
-> :warning: **Deleting a project deletes all resources within, be careful!**
+> ⚠️ **Deleting a project deletes all resources within, be careful!**
