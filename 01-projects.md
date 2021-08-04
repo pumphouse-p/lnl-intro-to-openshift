@@ -182,7 +182,20 @@ kube-root-ca.crt   1      33m
 myconfigmap        1      11m
 ```
 
-Go ahead and delete the `myotherproject` project.
+You can also provide a command line option to `oc` to execute a command against a particular namespace.
+
+For example, even though we switched our `oc` context back to `myproject` a few moments ago, we can still list out the configmaps in `myotherproject` without switching contexts.
+
+```bash
+$ oc -n myotherproject get configmaps
+```
+```
+NAME               DATA   AGE
+kube-root-ca.crt   1      2m23s
+myotherconfigmap   1      2m6s
+```
+
+That's good for now. You can go ahead and delete the `myotherproject` project.
 
 ```bash
 $ oc delete project myotherproject
