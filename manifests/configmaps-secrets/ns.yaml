@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: httpd-dev
+spec: {}
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: httpd-prod
+spec: {}
