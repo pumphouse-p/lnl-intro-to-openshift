@@ -7,3 +7,7 @@ spec:
   containers:
   - name: ubi
     image: registry.access.redhat.com/ubi8/ubi-micro
+    command: 
+    - "sleep"
+    args:
+    - "infinity"
