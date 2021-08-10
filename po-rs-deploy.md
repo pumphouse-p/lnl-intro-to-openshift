@@ -1,5 +1,7 @@
 # Pods, ReplicaSets, and Deployments
 
+## Overview
+
 In this document, we will explore some of the core resources used to define the 
 applications we want to run and how we want them to run.
 
@@ -22,7 +24,7 @@ resources in YAML manifests so that you can store them in a version control syst
 a pod.
 
 ```yaml
-$ tee -a kuard-pod.yaml << EOF
+$ tee kuard-pod.yaml << EOF
 apiVersion: v1
 kind: Pod
 metadata:
@@ -163,7 +165,7 @@ to do that.
 First, create a manifest that defines our Deployment.
 
 ```yaml
-$ tee -a kuard-deploy.yaml << EOF
+$ tee kuard-deploy.yaml << EOF
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -182,6 +184,9 @@ spec:
             containers:
             - name: kuard-app-container
               image: gcr.io/kuar-demo/kuard-amd64:blue
+              ports:
+              - name: http
+                containerPort: 8080
 EOF
 ```
 
@@ -209,6 +214,44 @@ $ oc get pods
 ```
 NAME                     READY   STATUS    RESTARTS   AGE
 kuard-8467b4d5fd-wff9q   1/1     Running   0          21s
+```
+
+View logs:
+
+```bash
+$ oc logs --tail=-1 -l app=kuard
+```
+```
+2021/08/09 17:37:51 Starting kuard version: v0.10.0-blue
+2021/08/09 17:37:51 **********************************************************************
+2021/08/09 17:37:51 * WARNING: This server may expose sensitive
+2021/08/09 17:37:51 * and secret information. Be careful.
+2021/08/09 17:37:51 **********************************************************************
+2021/08/09 17:37:51 Config: 
+{
+  "address": ":8080",
+  "debug": false,
+  "debug-sitedata-dir": "./sitedata",
+  "keygen": {
+    "enable": false,
+    "exit-code": 0,
+    "exit-on-complete": false,
+    "memq-queue": "",
+    "memq-server": "",
+    "num-to-gen": 0,
+    "time-to-run": 0
+  },
+  "liveness": {
+    "fail-next": 0
+  },
+  "readiness": {
+    "fail-next": 0
+  },
+  "tls-address": ":8443",
+  "tls-dir": "/tls"
+}
+2021/08/09 17:37:51 Could not find certificates to serve TLS
+2021/08/09 17:37:51 Serving on HTTP on :8080
 ```
 
 Delete the pod:

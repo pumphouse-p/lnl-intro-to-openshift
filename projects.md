@@ -1,5 +1,6 @@
 # Projects
 
+## Overview
 A Project is a unit of collaboration and isolation in OpenShift. From a collaboration
 standpoint, a project has one or more members. Members can have different roles within a
 Project, where some members may be granted full read/write access to the Project, and
