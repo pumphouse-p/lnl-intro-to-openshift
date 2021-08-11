@@ -13,14 +13,15 @@ configuration variables are provided through either configuration files, or
 environment variables.
 
 OpenShift supports external configuration through two different types of 
-objects: `ConfigMap`s and `Secret`s. The main distinction between the two is
+objects: `ConfigMap` and `Secret`. The main distinction between the two is
 that `ConfigMap` objects are used to store non-confidential data as they do
 not provide any secrecy or encryption. `Secret` objects are stored encrypted
 and access can be controlled through Role Based Access Control (RBAC) rules.
 
 ## Setup
 
-Create a couple of namespaces/projects that we'll use to see how `ConfigMap`s and `Secret`s work.
+Create a couple of namespaces/projects that we'll use to see how `ConfigMap` and 
+`Secret` work.
 
 ```bash
 $ oc create -f https://raw.githubusercontent.com/pumphouse-p/lnl-intro-to-openshift/main/manifests/configmaps-secrets/ns.yaml
@@ -66,7 +67,7 @@ Create the `ConfigMap` objects:
 $ oc create -f https://raw.githubusercontent.com/pumphouse-p/lnl-intro-to-openshift/main/manifests/configmaps-secrets/configmaps.yaml
 ```
 
-Review the details of both `ConfigMap`s:
+Review the details of both `ConfigMap` objects:
 
 ```bash
 $ oc -n httpd-dev describe configmap httpd-index
