@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: postgres
+    namespace: httpd-dev
+spec:
+    containers:
+    - name: postgres
+      image: quay.io/bitnami/postgresql:13
+      envFrom:
+      - secretRef:
+          name: postgres-config
