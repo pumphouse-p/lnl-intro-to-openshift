@@ -14,10 +14,10 @@ spec:
       labels:
         app: omc
     spec:
+      serviceAccountName: omc-sa
       containers:
       - name: omc-app-container
         image: quay.io/deparris/openshift-mini-console:latest
         ports:
         - name: http
           containerPort: 5000
-      serviceAccountName: omc-sa
