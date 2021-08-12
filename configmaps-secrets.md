@@ -247,6 +247,8 @@ spec:
           name: postgres-config
 ```
 
+> ℹ️ You can also consume Secrets from data volumes mounted within your containers.
+
 Launch the Pod:
 
 ```bash
