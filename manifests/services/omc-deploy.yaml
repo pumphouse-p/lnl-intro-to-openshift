@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: omc
+  namespace: omc
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: omc
+  template:
+    metadata:
+      name: omc-pod
+      labels:
+        app: omc
+    spec:
+      containers:
+      - name: omc-app-container
+        image: quay.io/deparris/openshift-mini-console:latest
+        ports:
+        - name: http
+          containerPort: 5000
+      serviceAccountName: omc-sa
