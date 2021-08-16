@@ -1,6 +1,6 @@
 # Introduction to OpenShift
 
-1. [OpenShift Projects](projects.md)
+1. [Projects](projects.md)
 1. [Pods, ReplicaSets, and Deployments](po-rs-deploy.md)
 1. [Services](services.md)
 1. [Routes](routes.md)
