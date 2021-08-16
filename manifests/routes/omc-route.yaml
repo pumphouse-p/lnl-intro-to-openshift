@@ -1,0 +1,14 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: omc
+  namespace: omc
+  labels:
+    app: omc
+spec:
+  port:
+    targetPort: http
+  to:
+    kind: Service
+    name: openshift-mini-console
+    weight: 100  
